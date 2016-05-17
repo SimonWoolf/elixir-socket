@@ -686,8 +686,8 @@ defmodule Socket.Web do
           end
         end |> on_success(options)
 
-      { :ok, _ } ->
-        { :error, :protocol_error }
+      { :ok, other } ->
+        { :error, {:protocol_error, other} }
 
       { :error, _ } = error ->
         error
