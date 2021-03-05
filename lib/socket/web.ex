@@ -669,7 +669,7 @@ defmodule Socket.Web do
             if String.valid?(data) do
               result
             else
-              { :error, :invalid_payload }
+              { :error, {:invalid_payload, data} }
             end
 
           { :ok, { :binary, _ } } = result ->
