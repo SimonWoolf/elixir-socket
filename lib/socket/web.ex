@@ -714,6 +714,9 @@ defmodule Socket.Web do
           :close -> case data do
             <<>> -> :close
 
+            # not sure why this happens but it does, closing is presumably still a sensible action
+            nil -> :close
+
             << code :: 16, rest :: binary >> ->
               { :close, close_code(code), rest }
           end
